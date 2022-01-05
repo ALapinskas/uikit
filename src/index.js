@@ -1,3 +1,5 @@
 import { Popup } from "./popup.js";
-window.uikit = { Popup };
-export { Popup };
+if(window) {
+    window.uikit = { Popup };
+}
+export { Popup } from "./popup.js";

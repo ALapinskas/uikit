@@ -2,10 +2,11 @@
   "name": "uikit",
   "version": "0.0.1",
   "description": "vanilla javascript ui components pack",
-  "main": "index.js",
+  "type": "module",
+  "main": "dist/main.js",
   "scripts": {
     "build": "webpack",
-    "test-ui": "http-server user-test"
+    "test-ui": "http-server"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,7 @@
     "ui-components",
     "ui"
   ],
-  "author": "Arturas Lapinskas <a.lapinskas@live.com>",
+  "author": "Arturas-Alfredas Lapinskas",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ALapinskas/uikit/issues"
