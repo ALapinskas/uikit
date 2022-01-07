@@ -20,3 +20,7 @@ UI components, vanilla-js based
         return contents;
     }
     new Popup("default", popupContents(), true);
+
+# Roadmap:
+- Version 0.3.0: add flow support
+- Version 0.4.0: add a jsdocs
