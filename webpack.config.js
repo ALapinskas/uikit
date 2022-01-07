@@ -4,7 +4,8 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'main.min.js'
+    filename: 'main.min.js',
+    libraryTarget: 'umd',
   }/*,
   module: {
     rules: [
