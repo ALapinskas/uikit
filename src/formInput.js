@@ -12,4 +12,12 @@ export class FormInput {
         this.inputWrap.appendChild(this.inputLabel);
         this.inputWrap.appendChild(this.inputComponent);
     }
+
+    get wrapper() {
+        return this.inputWrap;
+    }
+
+    get value() {
+        return this.inputComponent.value;
+    }
 }
