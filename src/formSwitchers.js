@@ -3,7 +3,7 @@ export class FormSwitchers {
         this.componentWrap = document.createElement('div');
         this.componentLabel = document.createElement('span');
         if (id) {
-            this.inputComponent.id = id;
+            this.componentWrap.setAttribute('id', id);
         }
         this.componentLabel.innerText = labelText;
         this.componentWrap.appendChild(this.componentLabel);

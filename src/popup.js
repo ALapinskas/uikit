@@ -1,11 +1,11 @@
 export class Popup {
-    constructor(id, html, show) {
+    constructor(id, html, show, closeButton = true) {
         this.popupWindow = document.createElement('div');
         this.backgroundMask = document.createElement('div');
         this.opened = !!show ? !!show : false;
-        this.initiatePopup(id, html, show);
+        this.initiatePopup(id, html, closeButton);
     }
-    initiatePopup (id, html) {
+    initiatePopup (id, html, closeButton) {
         this.backgroundMask.style.position = 'absolute';
         this.backgroundMask.style.zIndex = '1';
         this.backgroundMask.style.width = '100%';
@@ -25,10 +25,25 @@ export class Popup {
         this.popupWindow.style.display = this.opened ? "block" : "none";
         this.popupWindow.style.background = "white";
         this.popupWindow.style.zIndex = '2';
+        if (closeButton) {
+            let closeButton = document.createElement("span");
+            closeButton.innerText = "x";
+            closeButton.style.position = "absolute";
+            closeButton.style.right = "10px";
+            closeButton.style.top = "10px";
+            this.popupWindow.appendChild(closeButton);
+            closeButton.addEventListener("click", (e) => this.close());
+        }
         
         this.popupWindow.appendChild(html);
         document.body.appendChild(this.backgroundMask);
         document.body.appendChild(this.popupWindow);
+        
+        document.addEventListener("click", (e) => {
+            if (e.target === this.backgroundMask) {
+                this.close();
+            }
+        });
     }
 
     close () {

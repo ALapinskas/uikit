@@ -22,5 +22,22 @@ UI components, vanilla-js based
     new Popup("default", popupContents(), true);
 
 # Roadmap:
-- Version 0.3.0: add flow support
-- Version 0.4.0: add a jsdocs
+
+* Version 0.0.5:
+    - add development env, sourcemap, webpack dev server
+
+* Version 0.2.0:
+    - add popup mobile version
+
+* Version 0.3.0: 
+    - add flow support
+    
+* Version 0.4.0: 
+    - add a jsdocs
+
+# History:
+* Version 0.0.4:
+    - add popup close on click outside
+    - add popup close optional button
+* Version 0.0.3
+    - fixed formSwitcher set id issue

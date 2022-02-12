@@ -1,10 +1,11 @@
 {
   "name": "uikit",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "vanilla javascript ui components pack",
-  "main": "dist/main.min.js",
+  "main": "dist/bundle.min.js",
   "scripts": {
     "build": "webpack --mode=production",
+    "build-dev": "webpack --mode=development",
     "test-ui": "http-server"
   },
   "repository": {
