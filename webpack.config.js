@@ -1,10 +1,13 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: { 
+    "uikit": './src/index.js',
+    "testapp": './test/index.js'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.min.js',
+    filename: '[name].min.js',
     libraryTarget: 'umd',
   }/*,
   module: {

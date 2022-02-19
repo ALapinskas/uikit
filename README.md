@@ -23,19 +23,21 @@ UI components, vanilla-js based
 
 # Roadmap:
 
-* Version 0.0.5:
-    - add development env, sourcemap, webpack dev server
-
 * Version 0.2.0:
     - add popup mobile version
 
 * Version 0.3.0: 
-    - add flow support
+    - add flow/typescript support
     
 * Version 0.4.0: 
     - add a jsdocs
 
+* Version n:
+    - add development env, sourcemap, webpack dev server
 # History:
+* Version 0.0.5:
+    + formSwitchers set/get values
+
 * Version 0.0.4:
     - add popup close on click outside
     - add popup close optional button

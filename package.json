@@ -1,8 +1,8 @@
 {
   "name": "uikit",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "vanilla javascript ui components pack",
-  "main": "dist/bundle.min.js",
+  "main": "dist/uikit.min.js",
   "scripts": {
     "build": "webpack --mode=production",
     "build-dev": "webpack --mode=development",

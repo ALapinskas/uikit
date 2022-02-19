@@ -20,4 +20,8 @@ export class FormInput {
     get value() {
         return this.inputComponent.value;
     }
+
+    set value(newVal) {
+        this.inputComponent.value = newVal;
+    }
 }
