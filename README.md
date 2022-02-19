@@ -32,9 +32,10 @@ UI components, vanilla-js based
 * Version 0.4.0: 
     - add a jsdocs
 
-* Version n:
-    - add development env, sourcemap, webpack dev server
 # History:
+* Version 0.0.6:
+    + webpack dev server
+
 * Version 0.0.5:
     + formSwitchers set/get values
 

@@ -9,7 +9,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].min.js',
     libraryTarget: 'umd',
-  }/*,
+  },/*
   module: {
     rules: [
       {
@@ -24,4 +24,19 @@ module.exports = {
       }
     ]
   },*/
+  devServer: {
+    static: [
+      {
+        directory: path.join(__dirname, 'dist')
+      },
+      {
+        directory: path.join(__dirname, 'test')
+      }
+    ],
+    compress: true,
+    port: 9000,
+    client: {
+      overlay: false,
+    },
+  }
 };
