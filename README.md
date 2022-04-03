@@ -1,17 +1,17 @@
 # ui-lib
 UI components
 
-# import:
-    <script src="node_modules/uikit"></script>
 # Directly:
-    let popup = window.uikit.Popup;
-    let popupContents = function() {
-        let contents = document.createElement('p');
-        contents.innerText = "Hello, i'm a popup";
-        return contents;
-    }
-    new popup("default", popupContents(), true);
-
+    <script src="node_modules/uikit"></script>
+    <script>
+        let popup = window.uikit.Popup;
+        let popupContents = function() {
+            let contents = document.createElement('p');
+            contents.innerText = "Hello, i'm a popup";
+            return contents;
+        }
+        new popup("default", popupContents(), true);
+    </script>
 # With webpack:
     import { Popup } from 'uikit';
     let popupContents = function() {
