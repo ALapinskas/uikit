@@ -1,7 +1,7 @@
 # ui-lib
 UI components
 
-# Directly:
+# Use directly:
     <script src="node_modules/uikit"></script>
     <script>
         let popup = window.uikit.Popup;
@@ -12,7 +12,7 @@ UI components
         }
         new popup("default", popupContents(), true);
     </script>
-# With webpack:
+# Or with webpack:
     import { Popup } from 'uikit';
     let popupContents = function() {
         let contents = document.createElement('p');
