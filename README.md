@@ -1,4 +1,4 @@
-# ui-lib
+# uikit
 UI components
 
 # Use directly:
