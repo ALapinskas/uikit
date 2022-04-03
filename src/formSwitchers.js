@@ -1,4 +1,18 @@
+/** @enum {string} */
+export const SwitcherType = {
+    radio: "radio", 
+    checkbox: "checkbox"
+};
+
 export class FormSwitchers {
+    /**
+     * 
+     * @param {string} id - form switchers wrapper id 
+     * @param {string} labelText 
+     * @param {SwitcherType} type - radio/checkbox 
+     * @param {string} name - group controls name 
+     * @param {Array<string>} values
+     */
     constructor(id, labelText, type, name, values) {
         this.componentWrap = document.createElement('div');
         this.componentLabel = document.createElement('span');
@@ -22,17 +36,31 @@ export class FormSwitchers {
         });
     }
 
+    /**
+     * @returns {HTMLElement}
+     */
     get wrapper() {
         return this.componentWrap;
     }
 
+    /**
+     * get checked values
+     * @returns {Array<string>}
+     */
     get values() {
+        /** @type {NodeListOf<HTMLInputElement>} */
         let buttons = this.componentWrap.querySelectorAll('input'),
+        /** @type {Array<string>} */
             checked = [];
         buttons.forEach(btn => btn.checked ? checked.push(btn.value) : null);
         return checked;
     }
 
+    /**
+     * Set checked values
+     * @param {Array<string>} selected
+     * @returns {void}
+     */
     set values(selected) {
         let buttons = this.componentWrap.querySelectorAll('input');
         buttons.forEach(btn => {

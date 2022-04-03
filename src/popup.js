@@ -1,19 +1,37 @@
+/**
+ * Popup class for creating a popups
+ */
 export class Popup {
+    /**
+     * @param {string} id - id for the popup 
+     * @param {HTMLElement} html - popup html contents
+     * @param {boolean} show - Show we open popup on initialization
+     * @param {boolean} [closeButton = true] - Show the close button on the top right conner
+     */
     constructor(id, html, show, closeButton = true) {
+        /** @type {HTMLElement} */
         this.popupWindow = document.createElement('div');
+        /** @type {HTMLElement} */
         this.backgroundMask = document.createElement('div');
+        /** @type {boolean} */
         this.opened = !!show ? !!show : false;
-        this.initiatePopup(id, html, closeButton);
+        this.#initiatePopup(id, html, closeButton);
     }
-    initiatePopup (id, html, closeButton) {
+    /**
+     * @param {string} id - popup id
+     * @param {HTMLElement} html - popup html contents
+     * @param {boolean} [closeButton = true] - Show the close button on the top right conner
+     * @returns {void}
+     */
+    #initiatePopup (id, html, closeButton) {
         this.backgroundMask.style.position = 'absolute';
         this.backgroundMask.style.zIndex = '1';
         this.backgroundMask.style.width = '100%';
         this.backgroundMask.style.height = '100%';
         this.backgroundMask.style.opacity = '0.5';
         this.backgroundMask.style.backgroundColor = 'black';
-        this.backgroundMask.style.left = 0;
-        this.backgroundMask.style.top = 0;
+        this.backgroundMask.style.left = "0px";
+        this.backgroundMask.style.top = "0px";
         this.backgroundMask.style.display = this.opened ? "block" : "none";
 
         this.popupWindow.setAttribute("id", id ? id : "popup");
@@ -46,12 +64,20 @@ export class Popup {
         });
     }
 
+    /**
+     * close popup method
+     * @returns {void}
+     */
     close () {
         this.opened = false;
         this.popupWindow.style.display = "none";
         this.backgroundMask.style.display = "none";
     }
     
+    /**
+     * open popup method
+     * @returns {void}
+     */
     open () {
         this.opened = true;
         this.popupWindow.style.display = "block";

@@ -1,4 +1,10 @@
 export class FormInput {
+    /**
+     * 
+     * @param {string} id - form switchers wrapper id 
+     * @param {string} labelText 
+     * @param {string} type - input type
+     */
     constructor(id, labelText, type) {
         this.inputWrap = document.createElement('div');
         this.inputLabel = document.createElement('label');
@@ -13,14 +19,23 @@ export class FormInput {
         this.inputWrap.appendChild(this.inputComponent);
     }
 
+    /**
+     * @returns {HTMLElement}
+     */
     get wrapper() {
         return this.inputWrap;
     }
 
+    /**
+     * @returns {*}
+     */
     get value() {
         return this.inputComponent.value;
     }
 
+    /**
+     * @param {*} newVal
+     */
     set value(newVal) {
         this.inputComponent.value = newVal;
     }
