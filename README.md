@@ -1,5 +1,5 @@
 # ui-lib
-UI components, vanilla-js based
+UI components
 
 # import:
     <script src="node_modules/uikit"></script>
