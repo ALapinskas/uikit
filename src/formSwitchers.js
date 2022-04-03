@@ -3,7 +3,10 @@ export const SwitcherType = {
     radio: "radio", 
     checkbox: "checkbox"
 };
-
+/**
+ * @author Arturas-Alfredas Lapinskas
+ * Form Switchers class, radio/checkbox buttons with basic controls
+ */
 export class FormSwitchers {
     /**
      * 

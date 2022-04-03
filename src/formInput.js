@@ -1,3 +1,7 @@
+/**
+ * @author Arturas-Alfredas Lapinskas
+ * Input element with label, and basic controls
+ */
 export class FormInput {
     /**
      * 

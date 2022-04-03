@@ -1,5 +1,6 @@
 /**
- * Popup class for creating a popups
+ * @author Arturas-Alfredas Lapinskas
+ * Popup class, for creating popups
  */
 export class Popup {
     /**
@@ -15,15 +16,22 @@ export class Popup {
         this.backgroundMask = document.createElement('div');
         /** @type {boolean} */
         this.opened = !!show ? !!show : false;
-        this.#initiatePopup(id, html, closeButton);
+        /** @type {Array<Listener>} */
+        this.listeners = [];
+        this.#mountComponent(id, html, closeButton);
     }
     /**
-     * @param {string} id - popup id
+     * @param {string} id - uniq popup id
      * @param {HTMLElement} html - popup html contents
      * @param {boolean} [closeButton = true] - Show the close button on the top right conner
      * @returns {void}
      */
-    #initiatePopup (id, html, closeButton) {
+    #mountComponent (id, html, closeButton) {
+        let closeOnClickOutside = (/** @type {MouseEvent} */ e) => {
+            if (e.target === this.backgroundMask) {
+                this.close();
+            }
+        };
         this.backgroundMask.style.position = 'absolute';
         this.backgroundMask.style.zIndex = '1';
         this.backgroundMask.style.width = '100%';
@@ -44,24 +52,35 @@ export class Popup {
         this.popupWindow.style.background = "white";
         this.popupWindow.style.zIndex = '2';
         if (closeButton) {
-            let closeButton = document.createElement("span");
+            let closeButton = document.createElement("span"),
+                closePopup = () => this.close(),
+                hoverPopup = () => {
+                    closeButton.style.cursor = "pointer";
+                };
             closeButton.innerText = "x";
             closeButton.style.position = "absolute";
             closeButton.style.right = "10px";
             closeButton.style.top = "10px";
             this.popupWindow.appendChild(closeButton);
-            closeButton.addEventListener("click", (e) => this.close());
+            closeButton.addEventListener("mouseover", hoverPopup);
+            closeButton.addEventListener("click", closePopup);
+            this.listeners.push({ selector: closeButton, type: "mouseover", method: hoverPopup });
+            this.listeners.push({ selector: closeButton, type: "click", method: closePopup });
         }
         
         this.popupWindow.appendChild(html);
         document.body.appendChild(this.backgroundMask);
         document.body.appendChild(this.popupWindow);
         
-        document.addEventListener("click", (e) => {
-            if (e.target === this.backgroundMask) {
-                this.close();
-            }
-        });
+        document.addEventListener("click", closeOnClickOutside);
+        this.listeners.push({ selector: document, type: "click", method: closeOnClickOutside });
+    }
+
+    unmountComponent() {
+        console.log('unmount component');
+        this.listeners.forEach((listener) => {
+            listener.selector.removeEventListener(listener.type, listener.method);
+        })
     }
 
     /**
@@ -83,4 +102,13 @@ export class Popup {
         this.popupWindow.style.display = "block";
         this.backgroundMask.style.display = " block";
     }
+}
+/** @interface */
+class Listener {
+    /**@type {HTMLElement | Document} */
+    selector;
+    /**@type {string} */
+    type;
+    /** @type {EventListenerOrEventListenerObject} */
+    method;
 }
