@@ -3,7 +3,7 @@ UI components
 
 # import:
     <script src="node_modules/uikit"></script>
-# use directly:
+# Directly:
     let popup = window.uikit.Popup;
     let popupContents = function() {
         let contents = document.createElement('p');
@@ -12,7 +12,7 @@ UI components
     }
     new popup("default", popupContents(), true);
 
-# use with webpack:
+# With webpack:
     import { Popup } from 'uikit';
     let popupContents = function() {
         let contents = document.createElement('p');
@@ -20,17 +20,6 @@ UI components
         return contents;
     }
     new Popup("default", popupContents(), true);
-
-# Roadmap:
-
-* Version 0.2.0:
-    - add popup mobile version
-
-* Version 0.3.0: 
-    - add flow/typescript support
-    
-* Version 0.4.0: 
-    - add a jsdocs
 
 # History:
 * Version 0.0.6:
