@@ -1,6 +1,6 @@
 {
   "name": "uikit",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "vanilla javascript ui components pack",
   "main": "dist/uikit.min.js",
   "scripts": {

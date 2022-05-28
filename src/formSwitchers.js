@@ -1,13 +1,15 @@
-/** @enum {string} */
-export const SwitcherType = {
-    radio: "radio", 
-    checkbox: "checkbox"
-};
 /**
  * @author Arturas-Alfredas Lapinskas
  * Form Switchers class, radio/checkbox buttons with basic controls
  */
-export class FormSwitchers {
+import { EventEmitter } from "events";
+
+ /** @enum {string} */
+export const SwitcherType = {
+    radio: "radio", 
+    checkbox: "checkbox"
+};
+export class FormSwitchers extends EventEmitter {
     /**
      * 
      * @param {string} id - form switchers wrapper id 
@@ -17,6 +19,7 @@ export class FormSwitchers {
      * @param {Array<string>} values
      */
     constructor(id, labelText, type, name, values) {
+        super();
         this.componentWrap = document.createElement('div');
         this.componentLabel = document.createElement('span');
         if (id) {
@@ -34,6 +37,9 @@ export class FormSwitchers {
             switcher.value = value;
             switcherLabel.setAttribute('for', value);
             switcherLabel.innerText = value;
+            switcher.addEventListener('change', (event) => {
+                this.emit("change", event);
+            });
             this.componentWrap.appendChild(switcher);
             this.componentWrap.appendChild(switcherLabel);
         });
@@ -72,5 +78,11 @@ export class FormSwitchers {
                 btn.value === el ? btn.checked = true : btn.checked = false; 
             });
         });
+    }
+
+    destroy() {
+        this.removeAllListeners("change");
+        this.componentWrap = undefined;
+        this.componentLabel = undefined;
     }
 }

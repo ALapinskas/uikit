@@ -37,6 +37,10 @@ document.onreadystatechange = function () {
             radioButtonsWrap.wrapper.style.paddingBottom = '1rem';
             optionsForm.appendChild(radioButtonsWrap.wrapper);
 
+            radioButtonsWrap.on("change", (e) => {
+                console.log("radio buttons changed, new value: ", e.target.value);
+            });
+            
             optionsForm.appendChild(checkboxesWrap.wrapper);
             
             submitButton.type = "submit";

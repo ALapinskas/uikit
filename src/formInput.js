@@ -2,7 +2,8 @@
  * @author Arturas-Alfredas Lapinskas
  * Input element with label, and basic controls
  */
-export class FormInput {
+import { EventEmitter } from "events";
+export class FormInput extends EventEmitter {
     /**
      * 
      * @param {string} id - form switchers wrapper id 
@@ -10,6 +11,7 @@ export class FormInput {
      * @param {string} type - input type
      */
     constructor(id, labelText, type) {
+        super();
         this.inputWrap = document.createElement('div');
         this.inputLabel = document.createElement('label');
         this.inputComponent = document.createElement('input');
@@ -19,6 +21,9 @@ export class FormInput {
         if(type) {
             this.inputComponent.type = type;
         }
+        this.inputComponent.addEventListener('change', (event) => {
+            this.emit("change", event);
+        });
         this.inputWrap.appendChild(this.inputLabel);
         this.inputWrap.appendChild(this.inputComponent);
     }
@@ -42,5 +47,12 @@ export class FormInput {
      */
     set value(newVal) {
         this.inputComponent.value = newVal;
+    }
+
+    destroy() {
+        this.removeAllListeners("change");
+        this.inputWrap = undefined;
+        this.inputLabel = undefined;
+        this.inputComponent = undefined;
     }
 }
