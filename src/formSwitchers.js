@@ -80,6 +80,23 @@ export class FormSwitchers extends EventEmitter {
         });
     }
 
+    /**
+     * Set disabled buttons, buttons which is not specified in disabledIds will be set as enabled
+     * @param {Array<string> | string} disabledIds
+     * @returns {void}
+     */
+    disableButtons(disabledIds) {
+        let buttons = this.componentWrap.querySelectorAll('input');
+        buttons.forEach(btn => {
+            let isBtnDisabled = typeof disabledIds === "string" ? disabledIds === btn.id : disabledIds.find((id) => btn.id === id);
+            if (isBtnDisabled) {
+                btn.disabled = true;
+            } else if (btn.disabled) {
+                delete btn.disabled;
+            }
+        });
+    }
+
     destroy() {
         this.removeAllListeners("change");
         this.componentWrap = undefined;

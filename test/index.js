@@ -40,6 +40,8 @@ document.onreadystatechange = function () {
             radioButtonsWrap.on("change", (e) => {
                 console.log("radio buttons changed, new value: ", e.target.value);
             });
+
+            radioButtonsWrap.disableButtons("FM");
             
             optionsForm.appendChild(checkboxesWrap.wrapper);
             

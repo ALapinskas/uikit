@@ -2,7 +2,7 @@
 UI components
 
 # Use directly:
-    <script src="node_modules/uikit"></script>
+    <script src="node_modules/dist/uikit.min.js"></script>
     <script>
         let popup = window.uikit.Popup,
                     formSwitcher = window.uikit.FormSwitchers,
@@ -38,6 +38,9 @@ UI components
     new Popup("default", popupContents(), true);
 
 # History:
+* Version 0.0.8:
+    + added disableButtons method for the formSwitcher component
+
 * Version 0.0.7:
     + attached 'change' event listeners
     
